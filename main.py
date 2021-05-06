@@ -17,7 +17,7 @@ def login():
         # return redirect(f'/profile/{username}')
 
         if username and password == "":
-            print('wrong bitch')
+            print('You cant have a empty field')
 
         elif username and password != "":
             return redirect(f'/profile/{username}')
