@@ -1,6 +1,11 @@
 from flask import Flask,render_template,request,redirect
+from flask_bcrypt import Bcrypt
 
+
+##docs to encrypt passwd https://flask-bcrypt.readthedocs.io/en/latest/
 app=Flask(__name__)
+bcrypt=Bcrypt(app)
+
 
 @app.route('/')
 def home():
@@ -12,21 +17,28 @@ def login():
     if request.method=="POST":
         username = request.form['username']
         password = request.form['password']
+        hash_passwd = bcrypt.generate_password_hash(password).decode('utf-8')
+
         # print(username,password)
-        print(request.form)
-        # return redirect(f'/profile/{username}')
+        print(f"\ndictionary of username + password: {request.form}")
+        print(f"hashed password: {hash_passwd}\n")
 
-        if username and password == "":
-            print('You cant have a empty field')
 
-        elif username and password != "":
-            return redirect(f'/profile/{username}')
+        ##check if database passwd and entered password are the same
+        candidate = 'secret'
+        passwd_check=bcrypt.check_password_hash(hash_passwd, candidate)
+        print(passwd_check)
+
+
+        if username and password != "":
+                if passwd_check==True:
+                    return redirect(f'/profile/{username}')
+
 
     if request.method=="GET":
         username=""
         password=""
         return render_template('login.html')
-        # return redirect('/profile')
 
 @app.route('/profile/<name>')
 def profile(name):
