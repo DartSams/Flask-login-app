@@ -2,8 +2,6 @@
 
 > A clean & beautiful REST API App!
 
-> https://dartsams.github.io/main_index.html
-
 
 ### Website Preview
 <p> 
@@ -12,8 +10,8 @@
 
 
 ## Features 
-> Valid HTML5, CSS3 & Python code
-> Easy to modify
+> Valid HTML5, CSS3 & Python code\
+> Easy to modify\
 > Uses Flask Server
 
 ## Installation & Deployment 
