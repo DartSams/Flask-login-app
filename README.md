@@ -1,6 +1,6 @@
 # Flask-login-app
 
-> A clean & beautiful CRUD App!
+> A clean & beautiful REST API App!
 
 > https://dartsams.github.io/main_index.html
 
@@ -12,14 +12,14 @@
 
 
 ## Features 
-> Valid HTML5 & CSS3
+> Valid HTML5, CSS3 & Python code
 > Easy to modify
 > Uses Flask Server
 
 ## Installation & Deployment 
 -	Clone the repository
 -	Create a mysql account using mysql installer `https://www.youtube.com/watch?v=3vsC05rxZ8c` has a great video demonstrating how to create account,set up databases and teaches sql query commands
--   Create a file called `.env` inside it type `password='<your mysql username>'` then s=do the same for host,user,and database name
+-   Create a file called `.env` inside it type `password='<your mysql username>'` then do the same for host,user,and database name
 -	Now run the `main.py` file
 
 
@@ -27,7 +27,7 @@
 ✔️ Home \
 ✔️ login \
 ✔️ Register \
-✔️ Profile \
+✔️ Profile 
 
 
 ## Tools Used 
@@ -35,7 +35,4 @@
 * [<b>Flask</b>](https://flask-doc.readthedocs.io/en/latest/) - To host the server.
 
 ## Todo
--   add index.html for home page
--   add html alerts for login Ex. Wrong password
--   make css
--   get a screenshot of finished product and add to readme file
+-   
