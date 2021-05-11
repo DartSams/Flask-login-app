@@ -1,0 +1,19 @@
+.flex-container{
+    display: flex;
+    background-color: blue;
+}
+
+
+.flex-container a{
+    text-decoration: none;
+    margin:10px;
+    color: white;
+    font-size: 20px;
+    justify-content: flex-end;    
+}
+
+.flex-container a:hover{
+    border-radius: 5px;
+    border: 2px solid white;
+}
+
