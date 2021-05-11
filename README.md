@@ -7,8 +7,7 @@
 
 ### Website Preview
 <p> 
-    <a href="https://dartsams.github.io/assets/portfolio-website-preview.PNG" target="_blank"><img src="assets/portfolio website preview.PNG">
-    </a>
+    <img src="assets/preview.PNG">
 </p>
 
 
@@ -25,10 +24,10 @@
 
 
 ## Sections 
-✔️ Home 
-✔️ login
-✔️ Register
-✔️ Profile
+✔️ Home /
+✔️ login /
+✔️ Register /
+✔️ Profile /
 
 
 ## Tools Used 
