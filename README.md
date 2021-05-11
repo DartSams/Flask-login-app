@@ -24,15 +24,14 @@
 
 
 ## Sections 
-✔️ Home /
-✔️ login /
-✔️ Register /
-✔️ Profile /
+✔️ Home \
+✔️ login \
+✔️ Register \
+✔️ Profile \
 
 
 ## Tools Used 
 * [<b>Flask Bcrypt</b>](https://flask-bcrypt.readthedocs.io/en/latest/) - To encrypt passwords.
-
 * [<b>Flask</b>](https://flask-doc.readthedocs.io/en/latest/) - To host the server.
 
 ## Todo
