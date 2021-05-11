@@ -5,30 +5,49 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <!-- <link rel="stylesheet" type= "text/css" href="/Flask/login app/static/register.css"> -->
+    <link rel="stylesheet" href="{{url_for('static',filename='register.css')}}">
 </head>
+
+<header class="flex-container-header">
+    <a href="google.com" class="flex-item">Website Name</a>
+    <a href="/" class="flex-item">Home</a>
+    <a href="" class="flex-item">Shop</a>
+    <a href="" class="flex-item">About Us</a>
+    <a href="" class="flex-item">Contact</a>
+</header>
+
 <body>
-    <fieldset>
-        <legend>Create Account</legend>
-            <form action=""method="POST">
-                <label for="username">Username:</label><br>
-                <input type="text" placeholder="username" name="username">
-                <br>
-                <br>
-                <label for="email">Email:</label><br>
-                <input type="text" placeholder="Email" name="email">
-                <br>
-                <br>
-                <label for="password">Password</label><br>
-                <input type="password" placeholder="password" name="password">
-                <br>
-                <br>
-                <label for="password2">Re-enter Password</label><br>
-                <input type="password" placeholder="password" name="compare-password">
-                <br>
-                <br>
-                <input type="submit">
-            </form>
-    </fieldset>
+    
+    
+    <div class="flex-container-body">
+        <div class="flex-item-body">
+            <h1>Create Account</h1>
+                <form action=""method="POST" autocomplete="on">
+                    <label for="username">Username:</label><br>
+                    <input type="text" placeholder="username" name="username" class="entry">
+                    <br>
+                    <br>
+                    <label for="email">Email:</label><br>
+                    <input type="email" placeholder="Email" name="email" class="entry">
+                    <br>
+                    <br>
+                    <label for="password">Password</label><br>
+                    <input type="password" placeholder="password" name="password" class="entry">
+                    <br>
+                    <br>
+                    <label for="password2">Re-enter Password</label><br>
+                    <input type="password" placeholder="password" name="compare-password" class="entry">
+                    <br>
+                    <br>
+                    <input type="checkbox" name="terms-of-service">
+                    <label for="terms-of-service">By continuing, you agree to {Website Name} Conditions of Use and Privacy Notice.</label> <br>
+                    <br>
+                    <input type="submit" class="submit">
+                </form>
+        </div>
+        
+        </div>
     
 </body>
 </html>
