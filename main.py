@@ -24,7 +24,6 @@ mycursor=conn.cursor()
 
 
 app.config['SECRET_KEY'] = 'hello' #use session to save personal data to so user doesnt have to log in over and over
-login_state=False
 
 
 @app.route('/',methods=["GET","POST"])
@@ -87,7 +86,6 @@ def home():
 
 @app.route('/register',methods=["GET","POST"])
 def register():
-    global login_state
     if request.method=='GET':
         return render_template('register.html')
 
@@ -105,7 +103,6 @@ def register():
         # print(hash_passwd)
 
         if password==compare_password and 'terms-of-service' in request.form:
-            login_state=True
             mycursor.execute("INSERT INTO Flask_Login (name,password,email,privilege) VALUES (%s,%s,%s,%s)", (username,hash_passwd,email,'user'))
             conn.commit()
             return redirect(f'/profile')
