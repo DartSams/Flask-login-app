@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- <link rel="stylesheet" type= "text/css" href="/Flask/login app/static/login.css"> -->
+    <link rel="stylesheet" href="{{url_for('static',filename='login.css')}}">
+
+
+</head>
+<header class="flex-container-header">
+        <a href="/" class="flex-item">Website Name</a>
+        <a href="/" class="flex-item">Home</a>
+        <a href="/" class="flex-item">Shop</a>
+        <a href="" class="flex-item">About Us</a>
+        <a href="" class="flex-item">Contact</a>
+</header>
+
+<body class="home">
+
+    <h2>Website Users</h2>
+
+    <div class="flex-container-body">
+        <div class="flex-item-body">
+        <!-- <legend>Login Page</legend> -->
+            <h3>Welcome Back</h3>
+            <h5>Log in to your account below</h5>
+            <form action="" method="POST">
+                <!-- <label for="username">Username:</label> -->
+                <input type="text" placeholder="username" name="username">
+                <br>
+                <br>
+                <!-- <label for="password">Password:</label> -->
+                <input type="password" placeholder="password" name="password">
+                <br>
+                <br>
+                <input type="submit" class="submit">
+            </form>
+        </div>
+        
+        <div class="flex-item-body">
+            <h3>New Customer?</h3>
+            <pre>
+Lorem Ipsum is simply dummy text  
+of the printing and typesetting industry.
+Lorem Ipsum has been the industry's 
+standard dummy text ever since the
+1500s, when an unknown printer took 
+a galley of type and scrambled 
+it to make a type specimen book. 
+It has survived not only five centuries,
+            </pre>
+            <button><a href="/register">Create An Account</a></button>
+        </div>
+    </div>
+    
+</body>
+</html>
