@@ -19,7 +19,6 @@ mysql.init_app(app)
 
 conn=mysql.connect()
 mycursor=conn.cursor()
-##Table-Flask_Login
 ##good example of REST request https://towardsdatascience.com/launch-your-own-rest-api-using-flask-python-in-7-minutes-c4373eb34239
 
 
@@ -38,7 +37,6 @@ def home():
             result=mycursor.fetchall()
 
             for i in result:
-                # print(i[1])
                 passwd_check=bcrypt.check_password_hash(i[1], password)
                 print(passwd_check)
 
@@ -52,17 +50,6 @@ def home():
         elif username and password == "" or password == "":
             print('You must fill in the username and password fields')
             return redirect('/')
-
-
-        # print(username,password)
-        # print(f"\ndictionary of username + password: {request.form}")
-        # print(f"hashed password: {hash_passwd}\n")
-
-
-        # ##check if database passwd and entered password are the same
-        # example = 'secret'
-        # passwd_check=bcrypt.check_password_hash(hash_passwd, example)
-        # print(passwd_check)
 
 
     elif request.method=="GET":
@@ -80,38 +67,61 @@ def home():
             print(i)
 
         print(f"Current session: {session}")
-        return render_template('login.html')
-
-
-
-@app.route('/register',methods=["GET","POST"])
-def register():
-    if request.method=='GET':
-        return render_template('register.html')
-
-    elif request.method=='POST':
-        username=request.form['username']
-        email=request.form['email']
-        password=request.form['password']
-        compare_password=request.form['compare-password']
-        # terms=request.form['terms-of-service']
-        # print(request.form)
-        # print(f'account info:')
-        # print(username,email,password,co+mpare_password)
-            
-        hash_passwd = bcrypt.generate_password_hash(password).decode('utf-8')
-        # print(hash_passwd)
-
-        if password==compare_password and 'terms-of-service' in request.form:
-            mycursor.execute("INSERT INTO Flask_Login (name,password,email,privilege) VALUES (%s,%s,%s,%s)", (username,hash_passwd,email,'user'))
-            conn.commit()
-            return redirect(f'/profile')
         
-        else:
-            # print(password,compare_password)
-            return redirect('/register')
-        # login_state=True
-        # return redirect(f'/profile/{username}')
+        return render_template('login.html',session=session)
+
+
+
+@app.route('/register/page=<int:page_id>',methods=["GET","POST"])
+def register(page_id):
+    
+    if page_id==1:
+        if request.method=='GET':
+            return render_template('register.html')
+
+        elif request.method=='POST':
+            username=request.form['username']
+            session["username"]=username
+            email=request.form['email']
+            password=request.form['password']
+            compare_password=request.form['compare-password']
+
+                
+            hash_passwd = bcrypt.generate_password_hash(password).decode('utf-8')
+
+            if password==compare_password:
+                mycursor.execute(f"SELECT * FROM Flask_Login where name = %s",(username))
+                myresult = mycursor.fetchone()
+
+                if myresult == None:
+                    mycursor.execute("INSERT INTO Flask_Login (name,password,email,privilege) VALUES (%s,%s,%s,%s)", (username,hash_passwd,email,'user'))
+                    session.pop("username")
+                    return redirect("/register/page=2")
+
+                elif myresult != None:
+                    print('username already exists')
+                    return redirect("/register/page=1")
+                    
+            
+            else:
+                return redirect('/register/page=1')
+
+
+    elif page_id==2:
+        if request.method=="GET":
+            return render_template("register2.html")
+
+        elif request.method=="POST":
+            username=session["username"]
+            gender=request.form['gender']
+            age=request.form['age']
+            job_role=request.form['job']
+            location=request.form['location']
+
+            if 'terms-of-service' in request.form:
+                mycursor.execute("INSERT INTO Flask_Profile_Info (author,gender,age,job,location) VALUES (%s,%s,%s,%s,%s)", (username,gender,age,job_role,location))
+                conn.commit()
+    
 
 
 @app.route('/profile' ,methods=["GET","POST","PUT","DELETE"])
@@ -120,19 +130,12 @@ def profile():
     if request.method=="GET":
             if "username" in session:
                 username=session['username']
-                mycursor.execute('SELECT * FROM Flask_Profile_Info')
-                try:
-                    for num,x in enumerate(mycursor):
-                        for i in x:
-                            # print(i)
-                            user_attr.append(i)
-                    
-                    user_attr.pop(0)
-                    print(f"filtered list: {user_attr}")
-
-                except:
-                    print("fuck this time to go to sleep... not connected to the 2nd db do that later....")
+                mycursor.execute(f'SELECT * FROM Flask_Profile_Info WHERE author=%s',(username))
+                for num,x in enumerate(mycursor):
+                    for i in x:
+                        user_attr.append(i)
                 
+                user_attr.pop(0)                
                 return render_template('profile.html',username=username,user_attr=user_attr)
 
             else:
@@ -144,18 +147,26 @@ def profile():
 
 @app.route('/logout')
 def logout():
-    session.pop("username")
-    return redirect("/")
+    if "username" in session:
+        session.pop("username")
+        return redirect("/")
+    
+    else:
+        return redirect("/")
 
 
 @app.route("/delete")
 def delete():
-    username=session["username"]
-    mycursor.execute(f"DELETE FROM Flask_Login WHERE name=%s",(username))
-    mycursor.execute(f"DELETE FROM Flask_Profile_Info WHERE author=%s",(username))
-    conn.commit()
-    session.pop("username")
-    return redirect("/")
+    if "username" in session:
+        username=session["username"]
+        mycursor.execute(f"DELETE FROM Flask_Login WHERE name=%s",(username))
+        mycursor.execute(f"DELETE FROM Flask_Profile_Info WHERE author=%s",(username))
+        conn.commit()
+        session.pop("username")
+        return redirect("/")
+
+    else:
+        return redirect("/")
 
 
 @app.route("/profile/settings",methods=["GET","POST","PUT","DELETE"])
@@ -168,7 +179,6 @@ def setting():
             return redirect("/")
 
     elif request.method=="POST":
-        # print(request.values)
         username=session['username']
         gender=request.form['gender']
         age=request.form['age']
