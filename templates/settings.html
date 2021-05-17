@@ -4,28 +4,48 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>{{username}}</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='settings.css')}}">
+
 </head>
 <body>
-    <a href="/">Home</a>
-    <a href="/logout">Logout</a>
-    <a href="/profile/settings">Settings</a>
+    <header class="flex-header">
+        <a href="/" class="header-item">Home</a>
+        <a href="/logout" class="header-item">Logout</a>
+        <a href="/profile/settings" class="header-item">Settings</a>
+        <a href="/delete" class="header-item">Delete Account</a>
+        
+    </header>
+    
+
     <main>
-        <form method="POST">
-            <input type="radio" name="gender" value="male">
-            <label for="male">Male</label><br>
-            <input type="radio" name="gender" value="female">
-            <label for="female">Female</label><br>
-            <input type="radio" name="gender" value="other">
-            <label for="other">Other</label><br><br>
-            <label for="age">Age:</label>
-            <input type="text" name="age"><br>
-            <label for="job-role">Enter Job Title:</label>
-            <input type="text" name="job-role"><br>
-            <label for="location">Enter your location:</label>
-            <input type="text" name="location"><br><br>
-            <input type="submit">
-        </form>
+        <div class="flex-container-body">
+            <div class="flex-item-body">
+                <h1 class="flex-item-body">Update Profile</h1>
+                    <form action=""method="POST" autocomplete="on">
+                        <input type="radio" name="gender" value="male">
+                        <label for="male">Male</label><br>
+                        <input type="radio" name="gender" value="female">
+                        <label for="female">Female</label><br>
+                        <br>
+                        <label for="age">Age:</label><br>
+                        <input type="age" placeholder="age" name="age" class="entry">
+                        <br>
+                        <br>
+                        <label for="job">Job</label><br>
+                        <input type="text" placeholder="Job" name="job" class="entry">
+                        <br>
+                        <br>
+                        <label for="Location">Location</label><br>
+                        <input type="text" placeholder="Location" name="location" class="entry">
+                        <br>
+                        <br>
+                        <br>
+                        <input type="submit" class="submit">
+                    </form>
+            </div>
+            
+        </div>
     </main>
 </body>
 </html>

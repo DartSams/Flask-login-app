@@ -5,22 +5,41 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{username}}</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='profile.css')}}">
+
 </head>
 <body>
-    <a href="/">Home</a>
-    <a href="/logout">Logout</a>
-    <a href="/profile/settings">Settings</a>
-    <a href="/delete">Delete Account</a>
+    <header>
+        <div class="flex-container-header">
+            <a href="/" class="website-home">Website name</a>
+            <a href="/profile/settings" class="flex-item">Settings</a>
+            <a href="/logout" class="flex-item">Logout</a>
+        </div>
+        
+    </header>
+    
     <h1>
-        hey there {{username}}
+        Welcome {{username}}
     </h1>
 
     <main>
-        <ul>
-            {% for each in user_attr %}
-            <li>{{ each }}</li>
-            {% endfor %}
-        </ul>
+        <div class="test">
+            <ul class="db-attr-subjects">
+                <li class="subject-items">Gender:</li>
+                <li class="subject-items">Age:</li>
+                <li class="subject-items">Job Role:</li>
+                <li class="subject-items">Location:</li>
+            </ul>
+        </div>
+        <div class="test">
+            <ul class="user-attr-lst">
+                {% for each in user_attr %}
+                <li class="attr-item">{{ each }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+            
+        
         
     </main>
 </body>
