@@ -1,6 +1,6 @@
 # Flask-login-app
 
-> A clean & beautiful REST API App!
+> A clean & beautiful REST API Login App!
 
 
 ### Website Preview
@@ -14,15 +14,12 @@
 > Easy to modify\
 > Uses Flask Server
 
-## Installation & Deployment 
--	Clone the repository
--	Create a mysql account using mysql installer `https://www.youtube.com/watch?v=3vsC05rxZ8c` has a great video demonstrating how to create account,set up databases and teaches sql query commands
--   Create a file called `.env` inside it type `password='<your mysql username>'` then do the same for host,user,and database name
--	Now run the `main.py` file
-
 
 ## Sections 
 ✔️ Home \
+✔️ Shop \
+✔️ About Us \
+✔️ Contact \
 ✔️ login \
 ✔️ Register \
 ✔️ Profile 
@@ -31,6 +28,11 @@
 ## Tools Used 
 * [<b>Flask Bcrypt</b>](https://flask-bcrypt.readthedocs.io/en/latest/) - To encrypt passwords.
 * [<b>Flask</b>](https://flask-doc.readthedocs.io/en/latest/) - To host the server.
+* [<b>Flask-mysql-connector</b>](https://pypi.org/project/flask-mysql-connector/) - To save user data to a database.
+* [<b>Flask-session</b>](https://pythonbasics.org/flask-sessions/) - To get the current user logged in.
 
-## Todo
--   
+
+## Learned subjects
+-  How to join mysql tables
+-  Encrypt/Hash passwords
+-  Flask session
