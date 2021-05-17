@@ -20,9 +20,7 @@
     margin-left:67%
 }
 
-
-
-h1,label{
+h1,h2,h3,h5,pre,label{
     color:white;
 }
 
@@ -31,17 +29,15 @@ body{
 
 }
 
-.flex-container-body{
+body .flex-container-body{
     display: flex;
     margin-left:40%;
     margin-top: 5%;
     background-color: rgb(26,41,51);
     width:25%;
-    justify-content: center;
-    align-items: center;
 }
 
-.flex-item-body{
+body .flex-item-body{
     margin:10%;
 }
 

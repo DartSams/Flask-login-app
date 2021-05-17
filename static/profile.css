@@ -1,0 +1,52 @@
+.flex-container-header{
+    display:flex;
+    justify-content:space-between;
+    margin:20px
+}
+
+.flex-container-header .flex-item:nth-child(2){
+    margin-left:80%;
+}
+
+h1{
+    color: white;
+}
+.website-home ,.flex-item,.attr-item,.subject-items {
+    text-decoration: none;
+    color:white;
+    font-size: 20px;
+}
+
+
+body{
+    background-color: rgb(36,51,61);
+}
+
+
+.test{
+    background-color:rgb(26,41,51);
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+}
+
+
+h1,main{
+    display: flex;
+    justify-content: center;
+    align-items:center;
+}
+
+
+.user-attr-lst,.db-attr-subjects{
+    list-style-type: none;
+    flex-direction: row;
+}
+
+.attr-item,.subject-items{
+    margin: 20px;
+}
+
+.attr-item{
+    margin-right: 50px;    
+}
