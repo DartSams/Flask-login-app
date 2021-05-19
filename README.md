@@ -1,6 +1,6 @@
 # Flask-login-app
 
-> A clean & beautiful REST API Login App!
+> A clean & beautiful CRUD REST Login & Registration App!
 
 
 ### Website Preview
@@ -36,3 +36,10 @@
 -  How to join mysql tables
 -  Encrypt/Hash passwords
 -  Flask session
+
+
+## Installation & Deployment 
+-	Clone the repository
+-	To connect your own  MYSQL database first create two tables called Flask_Login and Flask_Profile_Info.The Flask_Login table if for storing user login data such as name,password,email & privilege.The Flask_Profile_Info table stores user personal data such as author,gender,age,job & location both tables need these columnes.
+-   Now create a `.env` file in the same directory as the main.py file this is to hold the enviroment variable for your MYSQL password inside it write `password=<your-mysql-password>` after this 
+-	 
